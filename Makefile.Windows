@@ -1,0 +1,15 @@
+CC = "C:/ti/ccsv7/tools/compiler/ti-cgt-c6000_8.2.2/bin/cl6x.exe" -mv6600 -O1 -g -I"C:/ti/ccsv7/tools/compiler/ti-cgt-c6000_8.2.2/include" -c --c99 -pc -DDSP
+AR = "C:/ti/ccsv7/tools/compiler/ti-cgt-c6000_8.2.2/bin/ar6x.exe" -ru
+LIBOBJS=lm.obj Axb.obj misc.obj lmlec.obj lmbc.obj lmblec.obj lmbleic.obj
+LIBSRCS=lm.c Axb.c misc.c lmlec.c lmbc.c lmblec.c lmbleic.c
+
+PROC_OPTS = -mv6600
+OPT_OPTS = -O1
+DEBUG_OPTS = -g
+INCLUDE_OPTS = -I. -I"C:/ti/ccsv7/tools/compiler/ti-cgt-c6000_8.2.2/include"
+CONTROL_OPTS = -c
+LANG_OPTS = --c99 -pc
+DEFS_OPTS = -DDSP
+liblevmar.lib:$(LIBSRCS)
+	$(CC) $(PROC_OPTS) $(OPT_OPTS) $(DEBUG_OPTS) $(INCLUDE_OPTS) $(CONTROL_OPTS) $(LANG_OPTS) $(DEFS_OPTS) $(DIR_OPTS) $(LIBSRCS)
+	$(AR) liblevmar.lib $(LIBOBJS)
